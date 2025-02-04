@@ -54,6 +54,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 #define STATUSBAR "dwmblocks"
+#define ICONSIZE 20   /* icon size in pixels */
+#define ICONSPACING 5 /* space (pixels) between icon and title */
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
