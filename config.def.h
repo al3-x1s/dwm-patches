@@ -14,7 +14,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_urgborder[]   = "#ff0000";
-#include "/home/<USER>/.cache/wal/colors-wal-dwm.h"
+#include "/home/3_x/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
 static const char *tags[] = { "Ⅰ", "ⅠⅠ", "ⅠⅠⅠ", "ⅠⅤ", "Ⅴ", "ⅤⅠ", "ⅤⅠⅠ", "ⅤⅠⅠⅠ", "ⅠⅩ" };
