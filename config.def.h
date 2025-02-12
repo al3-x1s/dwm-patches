@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -65,6 +66,10 @@ static const char *roficmd[] = { "rofi","-show","drun", NULL };
 static const char *screenshot[] = { "/home/3_x/.local/bin/screenshot.sh", NULL};
 static const char *screenshot_select[] = { "/home/3_x/.local/bin/screenshot.sh", "select", NULL};
 static const char *screenshot_window[] = { "/home/3_x/.local/bin/screenshot.sh", "window", NULL};
+/* Control Media Players */
+static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
+static const char *mednextcmd[] = { "playerctl", "next", NULL };
+static const char *medprevcmd[] = { "playerctl", "previous", NULL };
 
 
 
@@ -97,11 +102,12 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Tab,    focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_m,      spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			XK_minus,  spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,		XK_minus,  spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%-; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			XK_equal,  spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY|ShiftMask,		XK_equal,  spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 15%+; kill -44 $(pidof dwmblocks)") },
+	{ 0,                            XF86XK_AudioPlay,       spawn,  {.v = medplaypausecmd } },
+	{ 0,                            XF86XK_AudioNext,       spawn,  {.v = mednextcmd } },
+	{ 0,                            XF86XK_AudioPrev,       spawn,  {.v = medprevcmd } },
+	{ 0,		                XF86XK_AudioMute,       spawn,  SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ 0,			        XF86AudioLowerVolume,   spawn,  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-; kill -44 $(pidof dwmblocks)") },
+	{ 0,			        XF86AudioRaiseVolume,   spawn,  SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+; kill -44 $(pidof dwmblocks)") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
